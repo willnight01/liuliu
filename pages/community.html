@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社区</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="h-screen flex flex-col bg-gray-100">
+    <!-- 顶部导航栏 -->
+    <div class="bg-white px-4 py-2 flex items-center justify-between shadow-sm">
+        <h1 class="font-bold text-lg">宠物社区</h1>
+        <button class="text-gray-600">
+            <i class="fas fa-bell text-xl"></i>
+        </button>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="flex-1 overflow-y-auto">
+        <div class="p-4 space-y-4">
+            <!-- 动态项目 -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="p-4">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h3 class="font-medium">张小明</h3>
+                            <span class="text-gray-500 text-xs">2小时前</span>
+                        </div>
+                    </div>
+                    <p class="mt-3">今天带旺财去了城市公园的遛狗场，设施很完善，狗狗玩得很开心！推荐大家也来试试～</p>
+                    <div class="grid grid-cols-3 gap-2 mt-3">
+                        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1" alt="动态图片" class="w-full h-24 object-cover rounded">
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" alt="动态图片" class="w-full h-24 object-cover rounded">
+                        <img src="https://images.unsplash.com/photo-1552053831-71594a27632d" alt="动态图片" class="w-full h-24 object-cover rounded">
+                    </div>
+                    <div class="flex items-center gap-6 mt-4 text-gray-600">
+                        <button class="flex items-center gap-1">
+                            <i class="far fa-heart"></i>
+                            <span>23</span>
+                        </button>
+                        <button class="flex items-center gap-1">
+                            <i class="far fa-comment"></i>
+                            <span>12</span>
+                        </button>
+                        <button class="flex items-center gap-1">
+                            <i class="far fa-share-square"></i>
+                            <span>分享</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 更多动态 -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="p-4">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h3 class="font-medium">李华</h3>
+                            <span class="text-gray-500 text-xs">5小时前</span>
+                        </div>
+                    </div>
+                    <p class="mt-3">分享一个遛狗小技巧：带狗狗出门前先在家里活动一下，这样可以消耗一些精力，出门后会更好控制～</p>
+                    <div class="flex items-center gap-6 mt-4 text-gray-600">
+                        <button class="flex items-center gap-1">
+                            <i class="far fa-heart"></i>
+                            <span>45</span>
+                        </button>
+                        <button class="flex items-center gap-1">
+                            <i class="far fa-comment"></i>
+                            <span>18</span>
+                        </button>
+                        <button class="flex items-center gap-1">
+                            <i class="far fa-share-square"></i>
+                            <span>分享</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 发布按钮 -->
+    <button class="fixed right-4 bottom-20 w-14 h-14 bg-blue-500 rounded-full shadow-lg flex items-center justify-center text-white">
+        <i class="fas fa-plus text-xl"></i>
+    </button>
+
+    <!-- 底部导航栏 -->
+    <div class="bg-white shadow-lg">
+        <div class="flex justify-around items-center py-3 relative">
+            <a href="home.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
+                <i class="fas fa-map-marked-alt text-xl"></i>
+                <span class="text-xs mt-1">地图</span>
+            </a>
+            <a href="list.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
+                <i class="fas fa-list text-xl"></i>
+                <span class="text-xs mt-1">列表</span>
+            </a>
+            <!-- 中间的Logo按钮 -->
+            <a href="activities.html" class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center -mt-5 text-white shadow-lg border-4 border-white">
+                    <span class="font-bold text-lg">溜溜</span>
+                </div>
+                <span class="text-xs mt-1 text-blue-500">活动</span>
+            </a>
+            <a href="community.html" class="flex flex-col items-center text-blue-500">
+                <i class="fas fa-comments text-xl"></i>
+                <span class="text-xs mt-1 font-medium">社区</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
+                <i class="fas fa-user text-xl"></i>
+                <span class="text-xs mt-1">我的</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

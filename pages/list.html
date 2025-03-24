@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>溜溜 - 场地列表</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="h-screen flex flex-col bg-gray-100">
+    <!-- 顶部搜索栏 -->
+    <div class="bg-white px-4 py-2 shadow-sm">
+        <div class="relative">
+            <input type="text" placeholder="搜索附近的遛狗场地" class="w-full pl-10 pr-4 py-2 rounded-full bg-gray-100 focus:outline-none">
+            <i class="fas fa-search absolute left-4 top-3 text-gray-400"></i>
+        </div>
+        <div class="flex gap-2 mt-2 text-sm">
+            <button class="px-3 py-1 bg-blue-500 text-white rounded-full">附近</button>
+            <button class="px-3 py-1 bg-gray-200 rounded-full">评分最高</button>
+            <button class="px-3 py-1 bg-gray-200 rounded-full">最新</button>
+        </div>
+    </div>
+
+    <!-- 场地列表 -->
+    <div class="flex-1 overflow-y-auto">
+        <div class="p-4 space-y-4">
+            <!-- 场地项目 -->
+            <a href="place-detail.html" class="block bg-white rounded-lg shadow overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1" alt="场地图片" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-lg">城市公园遛狗场</h3>
+                            <div class="flex items-center mt-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ml-1 text-gray-600 text-sm">4.5 (128条评价)</span>
+                            </div>
+                        </div>
+                        <span class="text-blue-500">1.2km</span>
+                    </div>
+                    <p class="text-gray-600 mt-2 text-sm">开放时间：06:00-22:00</p>
+                    <div class="flex gap-2 mt-2">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded">免费停车</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded">有遮阳处</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded">供水设施</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 更多场地项目 -->
+            <a href="place-detail.html" class="block bg-white rounded-lg shadow overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" alt="场地图片" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-lg">宠物乐园</h3>
+                            <div class="flex items-center mt-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="ml-1 text-gray-600 text-sm">4.0 (89条评价)</span>
+                            </div>
+                        </div>
+                        <span class="text-blue-500">2.5km</span>
+                    </div>
+                    <p class="text-gray-600 mt-2 text-sm">开放时间：08:00-20:00</p>
+                    <div class="flex gap-2 mt-2">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded">收费</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded">专业训练场</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded">宠物用品</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bg-white shadow-lg">
+        <div class="flex justify-around items-center py-3 relative">
+            <a href="home.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
+                <i class="fas fa-map-marked-alt text-xl"></i>
+                <span class="text-xs mt-1">地图</span>
+            </a>
+            <a href="list.html" class="flex flex-col items-center text-blue-500">
+                <i class="fas fa-list text-xl"></i>
+                <span class="text-xs mt-1 font-medium">列表</span>
+            </a>
+            <!-- 中间的Logo按钮 -->
+            <a href="activities.html" class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center -mt-5 text-white shadow-lg border-4 border-white">
+                    <span class="font-bold text-lg">溜溜</span>
+                </div>
+                <span class="text-xs mt-1 text-blue-500">活动</span>
+            </a>
+            <a href="community.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
+                <i class="fas fa-comments text-xl"></i>
+                <span class="text-xs mt-1">社区</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
+                <i class="fas fa-user text-xl"></i>
+                <span class="text-xs mt-1">我的</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

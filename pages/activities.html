@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="h-screen flex flex-col bg-gray-100">
+    <!-- 顶部导航栏 -->
+    <div class="bg-white px-4 py-2 flex items-center justify-between shadow-sm">
+        <h1 class="font-bold text-lg">精彩活动</h1>
+        <button class="text-gray-600">
+            <i class="fas fa-filter text-xl"></i>
+        </button>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="flex-1 overflow-y-auto">
+        <div class="p-4 space-y-4">
+            <!-- 活动卡片 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1" alt="活动图片" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">遛狗活动</span>
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">新手友好</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">周末遛狗欢乐行</h3>
+                    <div class="text-gray-600 text-sm space-y-1">
+                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月16日 14:00-16:00</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>城市公园遛狗场</p>
+                        <p><i class="fas fa-users mr-2"></i>已报名 12/20 人</p>
+                    </div>
+                    <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                        立即报名
+                    </button>
+                </div>
+            </div>
+
+            <!-- 更多活动卡片 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb" alt="活动图片" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">训练课程</span>
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">专业指导</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">宠物训练大师课</h3>
+                    <div class="text-gray-600 text-sm space-y-1">
+                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月17日 10:00-12:00</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>宠物训练中心</p>
+                        <p><i class="fas fa-users mr-2"></i>已报名 8/15 人</p>
+                    </div>
+                    <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                        立即报名
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bg-white shadow-lg">
+        <div class="flex justify-around items-center py-3 relative">
+            <a href="home.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
+                <i class="fas fa-map-marked-alt text-xl"></i>
+                <span class="text-xs mt-1">地图</span>
+            </a>
+            <a href="list.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
+                <i class="fas fa-list text-xl"></i>
+                <span class="text-xs mt-1">列表</span>
+            </a>
+            <!-- 中间的Logo按钮 -->
+            <a href="activities.html" class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center -mt-5 text-white shadow-lg border-4 border-white">
+                    <span class="font-bold text-lg">溜溜</span>
+                </div>
+                <span class="text-xs mt-1 text-blue-500">活动</span>
+            </a>
+            <a href="community.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
+                <i class="fas fa-comments text-xl"></i>
+                <span class="text-xs mt-1">社区</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
+                <i class="fas fa-user text-xl"></i>
+                <span class="text-xs mt-1">我的</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
