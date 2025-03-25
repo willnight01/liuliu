@@ -64,37 +64,97 @@
             <h3 class="font-bold mb-3">场地特色</h3>
             <div class="grid grid-cols-4 gap-4">
                 <div class="flex flex-col items-center">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-tree text-blue-500"></i>
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors">
+                        <i class="fas fa-tree text-blue-500 text-xl"></i>
                     </div>
-                    <span class="text-xs mt-1">自然环境</span>
+                    <span class="text-sm mt-2 text-gray-700">自然环境</span>
+                    <span class="text-xs text-gray-500">绿树成荫</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-shield-alt text-blue-500"></i>
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors">
+                        <i class="fas fa-shield-alt text-green-500 text-xl"></i>
                     </div>
-                    <span class="text-xs mt-1">安全防护</span>
+                    <span class="text-sm mt-2 text-gray-700">安全防护</span>
+                    <span class="text-xs text-gray-500">2米围栏</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-expand-arrows-alt text-blue-500"></i>
+                    <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center hover:bg-purple-200 transition-colors">
+                        <i class="fas fa-expand-arrows-alt text-purple-500 text-xl"></i>
                     </div>
-                    <span class="text-xs mt-1">宽敞空间</span>
+                    <span class="text-sm mt-2 text-gray-700">宽敞空间</span>
+                    <span class="text-xs text-gray-500">1000㎡</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-users text-blue-500"></i>
+                    <div class="w-14 h-14 bg-pink-100 rounded-full flex items-center justify-center hover:bg-pink-200 transition-colors">
+                        <i class="fas fa-users text-pink-500 text-xl"></i>
                     </div>
-                    <span class="text-xs mt-1">社交友好</span>
+                    <span class="text-sm mt-2 text-gray-700">社交友好</span>
+                    <span class="text-xs text-gray-500">聚会活动</span>
                 </div>
+            </div>
+            <!-- 更多设施标签 -->
+            <div class="mt-4 flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm flex items-center gap-1">
+                    <i class="fas fa-tint text-xs"></i>饮水处
+                </span>
+                <span class="px-3 py-1 bg-green-50 text-green-600 rounded-full text-sm flex items-center gap-1">
+                    <i class="fas fa-umbrella-beach text-xs"></i>遮阳棚
+                </span>
+                <span class="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-sm flex items-center gap-1">
+                    <i class="fas fa-toilet text-xs"></i>宠物厕所
+                </span>
+                <span class="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-sm flex items-center gap-1">
+                    <i class="fas fa-chair text-xs"></i>休息座椅
+                </span>
+                <span class="px-3 py-1 bg-yellow-50 text-yellow-600 rounded-full text-sm flex items-center gap-1">
+                    <i class="fas fa-lightbulb text-xs"></i>夜间照明
+                </span>
             </div>
         </div>
 
         <!-- 用户评价 -->
         <div class="bg-white p-4 mt-2">
+            <!-- 评价统计 -->
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="text-3xl font-bold text-blue-600">4.8</div>
+                    <div class="flex flex-col">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">128条评价</span>
+                    </div>
+                </div>
+                <button class="px-4 py-2 bg-blue-500 text-white rounded-full text-sm hover:bg-blue-600 flex items-center gap-2">
+                    <i class="fas fa-edit"></i>
+                    写评价
+                </button>
+            </div>
+            <!-- 评价标签统计 -->
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                    <span class="text-sm text-gray-600">环境优美</span>
+                    <span class="text-sm text-blue-600 font-medium">95%</span>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                    <span class="text-sm text-gray-600">设施完善</span>
+                    <span class="text-sm text-blue-600 font-medium">88%</span>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                    <span class="text-sm text-gray-600">安全舒适</span>
+                    <span class="text-sm text-blue-600 font-medium">92%</span>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                    <span class="text-sm text-gray-600">交通便利</span>
+                    <span class="text-sm text-blue-600 font-medium">85%</span>
+                </div>
+            </div>
             <!-- 发表评价区域 -->
-            <div class="mb-6 p-4 bg-blue-50 rounded-lg">
-                <h3 class="font-bold mb-3">发表评价</h3>
+            <div class="mb-6 p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow-inner">
                 <div class="flex items-center mb-3 text-2xl text-yellow-400">
                     <i class="far fa-star hover:fas hover:fa-star cursor-pointer"></i>
                     <i class="far fa-star hover:fas hover:fa-star cursor-pointer"></i>
@@ -103,13 +163,24 @@
                     <i class="far fa-star hover:fas hover:fa-star cursor-pointer"></i>
                 </div>
                 <div class="flex flex-wrap gap-2 mb-3">
-                    <span class="px-3 py-1 bg-white rounded-full text-sm cursor-pointer hover:bg-blue-500 hover:text-white">环境优美</span>
-                    <span class="px-3 py-1 bg-white rounded-full text-sm cursor-pointer hover:bg-blue-500 hover:text-white">设施完善</span>
-                    <span class="px-3 py-1 bg-white rounded-full text-sm cursor-pointer hover:bg-blue-500 hover:text-white">安全舒适</span>
-                    <span class="px-3 py-1 bg-white rounded-full text-sm cursor-pointer hover:bg-blue-500 hover:text-white">交通便利</span>
+                    <span class="px-3 py-1 bg-white rounded-full text-sm cursor-pointer hover:bg-blue-500 hover:text-white transition-colors">环境优美</span>
+                    <span class="px-3 py-1 bg-white rounded-full text-sm cursor-pointer hover:bg-blue-500 hover:text-white transition-colors">设施完善</span>
+                    <span class="px-3 py-1 bg-white rounded-full text-sm cursor-pointer hover:bg-blue-500 hover:text-white transition-colors">安全舒适</span>
+                    <span class="px-3 py-1 bg-white rounded-full text-sm cursor-pointer hover:bg-blue-500 hover:text-white transition-colors">交通便利</span>
+                    <span class="px-3 py-1 bg-white rounded-full text-sm cursor-pointer hover:bg-blue-500 hover:text-white transition-colors">性价比高</span>
+                    <span class="px-3 py-1 bg-white rounded-full text-sm cursor-pointer hover:bg-blue-500 hover:text-white transition-colors">服务周到</span>
                 </div>
-                <textarea class="w-full p-3 border rounded-lg resize-none" rows="3" placeholder="分享你的使用体验..."></textarea>
-                <button class="mt-3 px-4 py-2 bg-blue-500 text-white rounded-full text-sm hover:bg-blue-600">发表评价</button>
+                <div class="relative">
+                    <textarea class="w-full p-3 pr-24 border rounded-lg resize-none bg-white" rows="3" placeholder="分享你的使用体验..."></textarea>
+                    <div class="absolute right-3 bottom-3 flex items-center gap-2">
+                        <button class="p-2 text-gray-400 hover:text-blue-500 transition-colors">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <button class="px-4 py-1.5 bg-blue-500 text-white rounded-full text-sm hover:bg-blue-600 transition-colors">
+                            发表
+                        </button>
+                    </div>
+                </div>
             </div>
             <h3 class="font-bold mb-3">用户评价</h3>
             <!-- 评价列表 -->
