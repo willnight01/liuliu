@@ -11,35 +11,69 @@
     <!-- 顶部导航栏 -->
     <div class="bg-white px-4 py-2 flex items-center justify-between shadow-sm">
         <h1 class="font-bold text-lg">精彩活动</h1>
-        <button class="text-gray-600">
+        <button class="text-gray-600" onclick="toggleFilter()">
             <i class="fas fa-filter text-xl"></i>
         </button>
+    </div>
+
+    <!-- 过滤面板 -->
+    <div id="filterPanel" class="hidden bg-white shadow-lg p-4 space-y-4">
+        <div class="space-y-2">
+            <label class="block text-gray-700 text-sm font-medium">参加状态</label>
+            <select id="statusFilter" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="all">全部</option>
+                <option value="registered">已报名</option>
+                <option value="unregistered">未报名</option>
+            </select>
+        </div>
+        <div class="space-y-2">
+            <label class="block text-gray-700 text-sm font-medium">活动类型</label>
+            <select id="typeFilter" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="all">全部</option>
+                <option value="walking">遛狗交友</option>
+                <option value="training">训练课程</option>
+                <option value="social">交友社交</option>
+                <option value="rescue">宠物救助</option>
+                <option value="hiking">徒步郊游</option>
+                <option value="adoption">宠物领养</option>
+            </select>
+        </div>
+        <div class="flex gap-2">
+            <button onclick="applyFilter()" class="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">确认</button>
+            <button onclick="resetFilter()" class="flex-1 bg-gray-100 text-gray-600 py-2 rounded-lg hover:bg-gray-200 transition-colors">重置</button>
+        </div>
     </div>
 
     <!-- 内容区域 -->
     <div class="flex-1 overflow-y-auto">
         <div class="p-4 space-y-4">
-            <!-- 活动卡片 -->
+            <!-- 遛狗交友活动 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1" alt="活动图片" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">遛狗活动</span>
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">遛狗交友</span>
                         <span class="px-2 py-1 bg-blue-50 rounded-full">新手友好</span>
                     </div>
-                    <h3 class="text-lg font-bold mb-2">周末遛狗欢乐行</h3>
+                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
+                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-paw text-sm text-blue-500"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">城市遛狗俱乐部</span>
+                    </a>
+                    <h3 class="text-lg font-bold mb-2">周末遛狗交友派对</h3>
                     <div class="text-gray-600 text-sm space-y-1">
                         <p><i class="far fa-calendar-alt mr-2"></i>2023年12月16日 14:00-16:00</p>
                         <p><i class="fas fa-map-marker-alt mr-2"></i>城市公园遛狗场</p>
                         <p><i class="fas fa-users mr-2"></i>已报名 12/20 人</p>
                     </div>
-                    <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
                         立即报名
                     </button>
                 </div>
             </div>
 
-            <!-- 更多活动卡片 -->
+            <!-- 训练课程活动 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb" alt="活动图片" class="w-full h-48 object-cover">
                 <div class="p-4">
@@ -47,13 +81,123 @@
                         <span class="px-2 py-1 bg-blue-50 rounded-full">训练课程</span>
                         <span class="px-2 py-1 bg-blue-50 rounded-full">专业指导</span>
                     </div>
+                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
+                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-sm text-blue-500"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">宠物训练学院</span>
+                    </a>
                     <h3 class="text-lg font-bold mb-2">宠物训练大师课</h3>
                     <div class="text-gray-600 text-sm space-y-1">
                         <p><i class="far fa-calendar-alt mr-2"></i>2023年12月17日 10:00-12:00</p>
                         <p><i class="fas fa-map-marker-alt mr-2"></i>宠物训练中心</p>
                         <p><i class="fas fa-users mr-2"></i>已报名 8/15 人</p>
                     </div>
-                    <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                        立即报名
+                    </button>
+                </div>
+            </div>
+
+            <!-- 交友社交活动 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f" alt="活动图片" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">交友社交</span>
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">轻松交友</span>
+                    </div>
+                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
+                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-heart text-sm text-blue-500"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">宠物爱好者社区</span>
+                    </a>
+                    <h3 class="text-lg font-bold mb-2">宠物主题下午茶</h3>
+                    <div class="text-gray-600 text-sm space-y-1">
+                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月18日 14:30-17:00</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>宠物友好咖啡厅</p>
+                        <p><i class="fas fa-users mr-2"></i>已报名 15/25 人</p>
+                    </div>
+                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                        立即报名
+                    </button>
+                </div>
+            </div>
+
+            <!-- 宠物救助活动 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e" alt="活动图片" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">宠物救助</span>
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">志愿服务</span>
+                    </div>
+                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
+                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-hand-holding-heart text-sm text-blue-500"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">爱心救助联盟</span>
+                    </a>
+                    <h3 class="text-lg font-bold mb-2">流浪动物救助行动</h3>
+                    <div class="text-gray-600 text-sm space-y-1">
+                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月19日 09:00-12:00</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>城市流浪动物救助站</p>
+                        <p><i class="fas fa-users mr-2"></i>已报名 20/30 人</p>
+                    </div>
+                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                        立即报名
+                    </button>
+                </div>
+            </div>
+
+            <!-- 徒步郊游活动 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1544776193-352d25ca82cd" alt="活动图片" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">徒步郊游</span>
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">户外探索</span>
+                    </div>
+                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
+                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-mountain text-sm text-blue-500"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">户外探险俱乐部</span>
+                    </a>
+                    <h3 class="text-lg font-bold mb-2">宠物主人郊游日</h3>
+                    <div class="text-gray-600 text-sm space-y-1">
+                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月20日 08:30-16:00</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>郊野公园</p>
+                        <p><i class="fas fa-users mr-2"></i>已报名 18/25 人</p>
+                    </div>
+                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                        立即报名
+                    </button>
+                </div>
+            </div>
+
+            <!-- 宠物领养活动 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" alt="活动图片" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">宠物领养</span>
+                        <span class="px-2 py-1 bg-blue-50 rounded-full">爱心助养</span>
+                    </div>
+                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
+                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-home text-sm text-blue-500"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">宠物之家</span>
+                    </a>
+                    <h3 class="text-lg font-bold mb-2">爱心领养日</h3>
+                    <div class="text-gray-600 text-sm space-y-1">
+                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月21日 10:00-17:00</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>宠物领养中心</p>
+                        <p><i class="fas fa-users mr-2"></i>已报名 25/40 人</p>
+                    </div>
+                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
                         立即报名
                     </button>
                 </div>
@@ -89,5 +233,89 @@
             </a>
         </div>
     </div>
+    <script>
+        function toggleFilter() {
+            const filterPanel = document.getElementById('filterPanel');
+            filterPanel.classList.toggle('hidden');
+        }
+
+        function applyFilter() {
+            const statusFilter = document.getElementById('statusFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            
+            // 获取所有活动卡片
+            const activityCards = document.querySelectorAll('.bg-white.rounded-lg.shadow-md');
+            
+            activityCards.forEach(card => {
+                let show = true;
+                
+                // 根据活动类型过滤
+                if (typeFilter !== 'all') {
+                    const activityType = card.querySelector('.text-blue-500.text-sm span').textContent;
+                    const typeMap = {
+                        'walking': '遛狗交友',
+                        'training': '训练课程',
+                        'social': '交友社交',
+                        'rescue': '宠物救助',
+                        'hiking': '徒步郊游',
+                        'adoption': '宠物领养'
+                    };
+                    if (!activityType.includes(typeMap[typeFilter])) {
+                        show = false;
+                    }
+                }
+                
+                // 根据报名状态过滤
+                if (statusFilter !== 'all' && show) {
+                    const button = card.querySelector('button');
+                    const isRegistered = button.textContent.trim() !== '立即报名';
+                    if ((statusFilter === 'registered' && !isRegistered) ||
+                        (statusFilter === 'unregistered' && isRegistered)) {
+                        show = false;
+                    }
+                }
+                
+                card.style.display = show ? 'block' : 'none';
+            });
+            
+            // 隐藏过滤面板
+            toggleFilter();
+        }
+
+        function resetFilter() {
+            // 重置选择
+            document.getElementById('statusFilter').value = 'all';
+            document.getElementById('typeFilter').value = 'all';
+            
+            // 显示所有活动卡片
+            const activityCards = document.querySelectorAll('.bg-white.rounded-lg.shadow-md');
+            activityCards.forEach(card => {
+                card.style.display = 'block';
+            });
+            
+            // 隐藏过滤面板
+            toggleFilter();
+        }
+
+        function goToSignup(button) {
+            const card = button.closest('.bg-white.rounded-lg.shadow-md');
+            const image = card.querySelector('img').src;
+            const [type, tag] = card.querySelectorAll('.text-blue-500.text-sm span');
+            const title = card.querySelector('h3').textContent;
+            const [time, location, participants] = card.querySelectorAll('.text-gray-600.text-sm p');
+
+            const params = new URLSearchParams({
+                image: image,
+                type: type.textContent,
+                tag: tag.textContent,
+                title: title,
+                time: time.textContent.replace(/^.*?\s/, ''),
+                location: location.textContent.replace(/^.*?\s/, ''),
+                participants: participants.textContent.replace(/^.*?\s/, '')
+            });
+
+            window.location.href = `activity-signup.html?${params.toString()}`;
+        }
+    </script>
 </body>
 </html>

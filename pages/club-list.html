@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的俱乐部</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="h-screen flex flex-col bg-gray-100">
+    <!-- 顶部导航栏 -->
+    <div class="bg-white px-4 py-2 flex items-center shadow-sm">
+        <a href="profile.html" class="text-gray-600">
+            <i class="fas fa-arrow-left text-xl"></i>
+        </a>
+        <h1 class="flex-1 text-center font-bold">我的俱乐部</h1>
+        <a href="club-create.html" class="text-blue-500">
+            <i class="fas fa-plus text-xl"></i>
+        </a>
+    </div>
+
+    <!-- 标签页 -->
+    <div class="bg-white">
+        <div class="flex border-b">
+            <button class="flex-1 py-3 text-blue-500 border-b-2 border-blue-500 font-medium">
+                我参加的
+            </button>
+            <button class="flex-1 py-3 text-gray-500 font-medium">
+                我创建的
+            </button>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="flex-1 overflow-y-auto p-4 space-y-4">
+        <!-- 俱乐部卡片 -->
+        <a href="club-detail.html" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="p-4">
+                <div class="flex items-center gap-4 mb-3">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-paw text-3xl text-blue-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">城市遛狗俱乐部</h3>
+                        <p class="text-gray-500 text-sm">一起遛狗，分享快乐</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between text-sm text-gray-500">
+                    <div class="flex items-center gap-4">
+                        <span><i class="fas fa-users mr-1"></i>25 成员</span>
+                        <span><i class="fas fa-calendar-check mr-1"></i>12 活动</span>
+                    </div>
+                    <span class="text-blue-500">查看详情 <i class="fas fa-chevron-right ml-1"></i></span>
+                </div>
+            </div>
+        </a>
+
+        <a href="club-detail.html" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="p-4">
+                <div class="flex items-center gap-4 mb-3">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-bone text-3xl text-purple-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">宠物训练俱乐部</h3>
+                        <p class="text-gray-500 text-sm">专业训练，快乐成长</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between text-sm text-gray-500">
+                    <div class="flex items-center gap-4">
+                        <span><i class="fas fa-users mr-1"></i>18 成员</span>
+                        <span><i class="fas fa-calendar-check mr-1"></i>8 活动</span>
+                    </div>
+                    <span class="text-blue-500">查看详情 <i class="fas fa-chevron-right ml-1"></i></span>
+                </div>
+            </div>
+        </a>
+    </div>
+</body>
+</html>

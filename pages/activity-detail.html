@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动详情</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="h-screen flex flex-col bg-gray-100">
+    <!-- 顶部导航栏 -->
+    <div class="bg-white px-4 py-2 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-2">
+            <a href="javascript:history.back()" class="text-gray-600">
+                <i class="fas fa-arrow-left text-xl"></i>
+            </a>
+            <h1 class="font-bold text-lg">活动详情</h1>
+        </div>
+        <button class="text-gray-600">
+            <i class="fas fa-share text-xl"></i>
+        </button>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="flex-1 overflow-y-auto">
+        <!-- 活动封面图 -->
+        <div class="relative">
+            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1" alt="活动封面" class="w-full h-48 object-cover">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                <div class="flex items-center gap-2 text-white text-sm mb-2">
+                    <span class="px-2 py-1 bg-blue-500/50 rounded-full">遛狗活动</span>
+                    <span class="px-2 py-1 bg-blue-500/50 rounded-full">新手友好</span>
+                </div>
+                <h2 class="text-xl font-bold text-white">周末遛狗欢乐行</h2>
+            </div>
+        </div>
+
+        <!-- 活动信息 -->
+        <div class="p-4 space-y-6">
+            <!-- 主办方信息 -->
+            <div class="bg-white rounded-lg p-4">
+                <a href="club-detail.html" class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-paw text-2xl text-blue-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-medium">城市遛狗俱乐部</h4>
+                        <p class="text-sm text-gray-500">一起遛狗，分享快乐</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </a>
+            </div>
+
+            <!-- 基本信息 -->
+            <div class="bg-white rounded-lg p-4 space-y-3">
+                <div class="flex items-center gap-3 text-gray-600">
+                    <i class="far fa-calendar-alt text-blue-500"></i>
+                    <span>2023年12月16日 14:00-16:00</span>
+                </div>
+                <div class="flex items-center gap-3 text-gray-600">
+                    <i class="fas fa-map-marker-alt text-red-500"></i>
+                    <span>城市公园遛狗场</span>
+                </div>
+                <div class="flex items-center gap-3 text-gray-600">
+                    <i class="fas fa-users text-green-500"></i>
+                    <span>已报名 12/20 人</span>
+                </div>
+            </div>
+
+            <!-- 主办方信息 -->
+            <div class="bg-white rounded-lg p-4">
+                <h3 class="font-bold mb-3">主办方</h3>
+                <a href="club-detail.html" class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1550184658-ff6132a71714" alt="俱乐部logo" class="w-12 h-12 rounded-lg object-cover">
+                    <div>
+                        <h4 class="font-medium">汪星人俱乐部</h4>
+                        <p class="text-sm text-gray-500">已举办 23 场活动</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400 ml-auto"></i>
+                </a>
+            </div>
+
+            <!-- 活动详情 -->
+            <div class="bg-white rounded-lg p-4">
+                <h3 class="font-bold mb-3">活动详情</h3>
+                <div class="text-gray-600 space-y-2">
+                    <p>🐕 活动介绍：</p>
+                    <p>周末带上你的爱犬一起来城市公园遛狗吧！专业训犬师将现场指导大家如何正确遛狗，让遛狗变得更有趣、更有意义。</p>
+                    <p>📋 活动流程：</p>
+                    <p>14:00-14:30 签到集合<br>14:30-15:30 遛狗技巧指导<br>15:30-16:00 自由活动&合影</p>
+                    <p>🎁 活动福利：</p>
+                    <p>- 精美狗狗零食一份<br>- 专业训犬师一对一指导<br>- 结识更多爱狗人士</p>
+                </div>
+            </div>
+
+            <!-- 参与者列表 -->
+            <div class="bg-white rounded-lg p-4">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-bold">参与者</h3>
+                    <span class="text-sm text-gray-500">12/20</span>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <div class="flex flex-col items-center">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="用户头像" class="w-12 h-12 rounded-full object-cover">
+                        <span class="text-xs mt-1">张小明</span>
+                    </div>
+                    <!-- 更多参与者 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部报名按钮 -->
+    <div class="bg-white p-4 shadow-lg">
+        <button class="w-full bg-blue-500 text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition-colors">
+            立即报名
+        </button>
+    </div>
+</body>
+</html>
