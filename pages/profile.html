@@ -32,30 +32,28 @@
         <!-- 功能模块 -->
         <div class="bg-white mb-4">
             <div class="grid grid-cols-3 gap-4 p-4 border-b">
+                <a href="pet-list.html" class="flex flex-col items-center">
+                    <i class="fas fa-dog text-2xl text-yellow-500 mb-1"></i>
+                    <span class="text-sm">我的宠物</span>
+                    <span class="text-xs text-gray-500 mt-1">2只</span>
+                </a>
                 <div class="flex flex-col items-center">
-                    <i class="fas fa-crown text-2xl text-yellow-500 mb-1"></i>
-                    <span class="text-sm">会员</span>
+                    <i class="fas fa-users text-2xl text-blue-500 mb-1"></i>
+                    <span class="text-sm">俱乐部</span>
+                    <span class="text-xs text-gray-500 mt-1">3个</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <i class="fas fa-star text-2xl text-blue-500 mb-1"></i>
-                    <span class="text-sm">积分</span>
+                    <i class="fas fa-calendar-check text-2xl text-purple-500 mb-1"></i>
+                    <span class="text-sm">活动</span>
+                    <span class="text-xs text-gray-500 mt-1">5次</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <i class="fas fa-headset text-2xl text-green-500 mb-1"></i>
-                    <span class="text-sm">客服</span>
+                    <i class="fas fa-clock text-2xl text-green-500 mb-1"></i>
+                    <span class="text-sm">遛狗时长</span>
+                    <span class="text-xs text-gray-500 mt-1">12h</span>
                 </div>
             </div>
 
-            <!-- 小狗地图使用指南 -->
-            <div class="p-4 border-b">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-book text-blue-500"></i>
-                        <span>小狗地图使用指南</span>
-                    </div>
-                    <i class="fas fa-chevron-right text-gray-400"></i>
-                </div>
-            </div>
 
             <!-- 我的行程 -->
             <div class="p-4">
@@ -106,7 +104,7 @@
 
     <!-- 底部导航栏 -->
     <div class="bg-white shadow-lg">
-        <div class="flex justify-around items-center py-3">
+        <div class="flex justify-around items-center py-1.5">
             <a href="home.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
                 <i class="fas fa-map-marked-alt text-xl"></i>
                 <span class="text-xs mt-1">地图</span>
@@ -115,9 +113,11 @@
                 <i class="fas fa-list text-xl"></i>
                 <span class="text-xs mt-1">列表</span>
             </a>
-            <a href="activities.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
-                <i class="fas fa-calendar-alt text-xl"></i>
-                <span class="text-xs mt-1">活动</span>
+            <a href="activities.html" class="flex flex-col items-center">
+                <div class="w-20 h-20 flex items-center justify-center -mt-8">
+                    <img src="assets/logo.svg" alt="遛遛" class="w-full h-full">
+                </div>
+                <span class="text-xs mt-1 text-blue-500">活动</span>
             </a>
             <a href="community.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
                 <i class="fas fa-users text-xl"></i>

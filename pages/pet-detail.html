@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宠物详情 - 遛遛</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- 顶部导航栏 -->
+    <nav class="bg-blue-500 text-white p-4 fixed w-full top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="javascript:history.back()" class="mr-4">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </a>
+                <h1 class="text-xl font-bold">宠物详情</h1>
+            </div>
+            <button class="bg-white text-blue-500 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-50">
+                <i class="fas fa-edit mr-1"></i>编辑
+            </button>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto pt-20 pb-16 px-4">
+        <!-- 宠物基本信息 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-4">
+            <div class="flex items-center mb-6">
+                <div class="w-24 h-24 rounded-full overflow-hidden mr-6 flex-shrink-0">
+                    <img src="https://placekitten.com/200/200" alt="宠物头像" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">小白</h2>
+                    <p class="text-gray-600">金毛寻回犬</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="flex items-center">
+                    <i class="fas fa-birthday-cake text-blue-500 mr-2"></i>
+                    <span class="text-gray-600">2岁（2022年3月15日）</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-venus-mars text-blue-500 mr-2"></i>
+                    <span class="text-gray-600">公</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-weight text-blue-500 mr-2"></i>
+                    <span class="text-gray-600">25公斤</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-cut text-blue-500 mr-2"></i>
+                    <span class="text-gray-600">已绝育</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 健康记录 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">健康记录</h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fas fa-syringe text-blue-500 mr-2"></i>
+                        <span class="text-gray-600">狂犬疫苗</span>
+                    </div>
+                    <span class="text-gray-500">2023年5月20日</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fas fa-pills text-blue-500 mr-2"></i>
+                        <span class="text-gray-600">驱虫</span>
+                    </div>
+                    <span class="text-gray-500">2023年6月15日</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 性格标签 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">性格特点</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">活泼</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">友善</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">喜欢玩球</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">不挑食</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">亲人</span>
+            </div>
+        </div>
+
+        <!-- 社交状态 -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">社交状态</h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fas fa-paw text-blue-500 mr-2"></i>
+                        <span class="text-gray-600">遛狗次数</span>
+                    </div>
+                    <span class="text-gray-500">本月已遛15次</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fas fa-users text-blue-500 mr-2"></i>
+                        <span class="text-gray-600">狗友数量</span>
+                    </div>
+                    <span class="text-gray-500">8个好友</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="bg-white fixed bottom-0 w-full border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-around py-2">
+                <a href="home.html" class="text-gray-600 hover:text-blue-500 flex flex-col items-center">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">首页</span>
+                </a>
+                <a href="list.html" class="text-gray-600 hover:text-blue-500 flex flex-col items-center">
+                    <i class="fas fa-map-marker-alt text-xl"></i>
+                    <span class="text-xs mt-1">场地</span>
+                </a>
+                <a href="community.html" class="text-gray-600 hover:text-blue-500 flex flex-col items-center">
+                    <i class="fas fa-comments text-xl"></i>
+                    <span class="text-xs mt-1">社区</span>
+                </a>
+                <a href="profile.html" class="text-blue-500 flex flex-col items-center">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">我的</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

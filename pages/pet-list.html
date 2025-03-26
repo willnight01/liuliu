@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的宠物 - 遛遛</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- 顶部导航栏 -->
+    <nav class="bg-blue-500 text-white p-4 fixed w-full top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="javascript:history.back()" class="mr-4">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </a>
+                <h1 class="text-xl font-bold">我的宠物</h1>
+            </div>
+            <a href="pet-detail.html" class="bg-white text-blue-500 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-50">
+                <i class="fas fa-plus mr-1"></i>添加宠物
+            </a>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto pt-20 pb-16 px-4">
+        <!-- 宠物列表 -->
+        <div class="grid grid-cols-1 gap-4">
+            <!-- 宠物卡片 -->
+            <a href="pet-detail.html?id=1" class="bg-white rounded-lg shadow-md p-4 flex items-center space-x-4 hover:shadow-lg transition duration-300">
+                <div class="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
+                    <img src="https://placekitten.com/200/200" alt="宠物头像" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">小白</h3>
+                            <p class="text-gray-600">金毛寻回犬</p>
+                        </div>
+                        <span class="text-blue-500"><i class="fas fa-chevron-right"></i></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">2岁</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">公</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">已绝育</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="pet-detail.html?id=2" class="bg-white rounded-lg shadow-md p-4 flex items-center space-x-4 hover:shadow-lg transition duration-300">
+                <div class="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
+                    <img src="https://placekitten.com/201/201" alt="宠物头像" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">贝贝</h3>
+                            <p class="text-gray-600">柯基</p>
+                        </div>
+                        <span class="text-blue-500"><i class="fas fa-chevron-right"></i></span>
+                    </div>
+                    <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">1岁</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">母</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">未绝育</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="bg-white fixed bottom-0 w-full border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-around py-2">
+                <a href="home.html" class="text-gray-600 hover:text-blue-500 flex flex-col items-center">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">首页</span>
+                </a>
+                <a href="list.html" class="text-gray-600 hover:text-blue-500 flex flex-col items-center">
+                    <i class="fas fa-map-marker-alt text-xl"></i>
+                    <span class="text-xs mt-1">场地</span>
+                </a>
+                <a href="community.html" class="text-gray-600 hover:text-blue-500 flex flex-col items-center">
+                    <i class="fas fa-comments text-xl"></i>
+                    <span class="text-xs mt-1">社区</span>
+                </a>
+                <a href="profile.html" class="text-blue-500 flex flex-col items-center">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">我的</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>
