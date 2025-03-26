@@ -8,13 +8,95 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .map-bg {
-            background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 100%);
+            background-image: url('picutre/map.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .map-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            pointer-events: none;
+        }
+        .map-controls {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .map-control-btn {
+            width: 36px;
+            height: 36px;
+            background-color: white;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
         .map-marker {
             animation: bounce 1s infinite alternate;
+            z-index: 10;
+        }
+        .map-marker-container {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 2px;
+            border-radius: 50%;
+        }
+        .weather-widget {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .search-box {
+            position: absolute;
+            top: 12px;
+            left: 0;
+            right: 0;
+            z-index: 30;
+            padding: 0 16px;
+        }
+        .filter-options {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            z-index: 30;
+            padding: 0 16px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+        .filter-option {
+            background-color: white;
+            border-radius: 16px;
+            padding: 6px 12px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .filter-option:hover, .filter-option.active {
+            background-color: #EBF5FF;
+            color: #3B82F6;
+        }
+        .filter-option.active {
+            border: 1px solid #3B82F6;
         }
         .weather-icon {
-            animation: pulse 2s infinite;
+            /* 删除了pulse动画 */
         }
         .interactive-element {
             transition: all 0.3s ease;
@@ -26,54 +108,171 @@
             from { transform: translateY(0); }
             to { transform: translateY(-5px); }
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        
+        /* 加载页面样式 */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .splash-screen.hide {
+            opacity: 0;
+            transform: translateY(-100%);
+            pointer-events: none;
+        }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            animation: logo-bounce 1.5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        .tagline {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 16px;
+            max-width: 80%;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-up 1s forwards 0.5s;
+        }
+        .loading-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 32px;
+        }
+        .loading-dot {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        .loading-dot:nth-child(1) {
+            animation: dot-fade 1.2s infinite 0s;
+        }
+        .loading-dot:nth-child(2) {
+            animation: dot-fade 1.2s infinite 0.4s;
+        }
+        .loading-dot:nth-child(3) {
+            animation: dot-fade 1.2s infinite 0.8s;
+        }
+        @keyframes logo-bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-15px); }
+        }
+        @keyframes fade-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes dot-fade {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
     </style>
 </head>
-<body class="h-screen flex flex-col bg-blue-50">
-    <!-- 顶部区域 -->
-    <div class="bg-white px-4 py-4 shadow-sm">
-        <div class="flex items-center gap-4 mb-3">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 flex items-center justify-center">
-                    <img src="assets/logo.svg" alt="遛遛" class="w-full h-full">
-                </div>
-                <div class="flex flex-col">
-                    <h1 class="text-xl font-bold text-blue-600">遛遛</h1>
-                    <p class="text-sm text-gray-500">让每次遛狗，都成为美好体验</p>
-                </div>
-            </div>
-            <div class="flex flex-col items-end ml-auto">
-                <div class="weather-icon flex items-center gap-1 bg-blue-50 px-2 py-0.5 rounded-full text-sm mb-1">
-                    <i class="fas fa-cloud-sun text-lg text-yellow-500"></i>
-                    <span class="font-semibold">23°C</span>
-                </div>
-                <div class="text-xs bg-green-50 px-2 py-0.5 rounded-full flex items-center gap-1">
-                    <i class="fas fa-paw text-green-500"></i>
-                    <span class="text-green-700">非常适合遛狗</span>
-                </div>
-            </div>
+<body class="h-screen flex flex-col">
+    <!-- 加载页面 -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="logo-container">
+            <img src="assets/logo.svg" alt="遛遛" class="w-3/4 h-3/4">
         </div>
-        <div class="relative">
-            <input type="text" placeholder="搜索附近的遛狗场地" class="w-full pl-10 pr-4 py-2 rounded-full bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300">
-            <i class="fas fa-search absolute left-4 top-3 text-blue-400"></i>
+        <h1 class="text-2xl text-white font-bold">遛遛</h1>
+        <p class="tagline">让每次遛狗，都成为美好体验</p>
+        <div class="loading-dots">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
         </div>
     </div>
 
-    <!-- 地图区域 -->
+    <!-- 地图区域 - 现在是全屏的 -->
     <div class="flex-1 relative">
         <div class="absolute inset-0 map-bg">
+            <!-- 半透明覆盖层 -->
+            <div class="map-overlay"></div>
+            
+            <!-- 搜索框 - 悬浮在顶部 -->
+            <div class="search-box">
+                <div class="relative max-w-lg mx-auto">
+                    <input type="text" placeholder="搜索附近的遛狗场地" class="w-full pl-10 pr-4 py-3 rounded-full bg-white shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <i class="fas fa-search absolute left-4 top-3.5 text-blue-400"></i>
+                </div>
+            </div>
+            
+            <!-- 过滤选项 -->
+            <div class="filter-options">
+                <div class="filter-option">
+                    <i class="fas fa-utensils text-orange-500"></i>
+                    <span>餐厅</span>
+                </div>
+                <div class="filter-option active">
+                    <i class="fas fa-tree text-green-500"></i>
+                    <span>绿地</span>
+                </div>
+                <div class="filter-option">
+                    <i class="fas fa-leaf text-green-600"></i>
+                    <span>公园</span>
+                </div>
+                <div class="filter-option">
+                    <i class="fas fa-shopping-bag text-purple-500"></i>
+                    <span>商场</span>
+                </div>
+            </div>
+            
+            <!-- 天气和遛狗建议 - 悬浮在左下角，尺寸已缩小 -->
+            <div class="weather-widget">
+                <div class="flex items-center gap-1 bg-white px-2 py-1.5 rounded-lg shadow-md text-sm">
+                    <i class="fas fa-cloud-sun text-lg text-yellow-500"></i>
+                    <span class="font-medium">23°C</span>
+                </div>
+                <div class="bg-white px-2 py-1.5 rounded-lg shadow-md flex items-center gap-1 text-sm">
+                    <i class="fas fa-paw text-green-500"></i>
+                    <span class="text-green-700">适合遛狗</span>
+                </div>
+            </div>
+            
+            <!-- 地图控件 -->
+            <div class="map-controls">
+                <div class="map-control-btn">
+                    <i class="fas fa-plus text-blue-500"></i>
+                </div>
+                <div class="map-control-btn">
+                    <i class="fas fa-minus text-blue-500"></i>
+                </div>
+                <div class="map-control-btn">
+                    <i class="fas fa-expand text-blue-500"></i>
+                </div>
+            </div>
+            
             <!-- 模拟的地图内容 -->
             <div class="w-full h-full relative overflow-hidden">
                 <!-- 专业遛狗场标记 -->
                 <div class="map-marker absolute top-1/3 left-1/3 transform -translate-x-1/2 -translate-y-1/2 interactive-element cursor-pointer group">
-                    <div class="w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-50 border-2 border-blue-400">
-                        <i class="fas fa-bone text-2xl text-blue-500"></i>
+                    <div class="map-marker-container">
+                        <div class="w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-50 border-2 border-blue-400">
+                            <i class="fas fa-bone text-2xl text-blue-500"></i>
+                        </div>
                     </div>
-                    <div class="hidden group-hover:block absolute top-full mt-2 bg-white p-3 rounded-lg shadow-lg text-sm min-w-[200px]">
+                    <div class="hidden group-hover:block absolute top-full mt-2 bg-white p-3 rounded-lg shadow-lg text-sm min-w-[200px] z-20">
                         <div class="flex items-center gap-2 mb-1">
                             <p class="font-bold text-blue-600">专业遛狗场</p>
                             <span class="bg-blue-100 text-blue-600 text-xs px-2 py-0.5 rounded-full">4.8分</span>
@@ -85,13 +284,15 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- 公园标记 -->
                 <div class="map-marker absolute top-1/2 left-2/3 transform -translate-x-1/2 -translate-y-1/2 interactive-element cursor-pointer group">
-                    <div class="w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-50 border-2 border-green-400">
-                        <i class="fas fa-tree text-2xl text-green-500"></i>
+                    <div class="map-marker-container">
+                        <div class="w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-50 border-2 border-green-400">
+                            <i class="fas fa-tree text-2xl text-green-500"></i>
+                        </div>
                     </div>
-                    <div class="hidden group-hover:block absolute top-full mt-2 bg-white p-3 rounded-lg shadow-lg text-sm min-w-[200px]">
+                    <div class="hidden group-hover:block absolute top-full mt-2 bg-white p-3 rounded-lg shadow-lg text-sm min-w-[200px] z-20">
                         <div class="flex items-center gap-2 mb-1">
                             <p class="font-bold text-green-600">城市公园</p>
                             <span class="bg-green-100 text-green-600 text-xs px-2 py-0.5 rounded-full">4.5分</span>
@@ -106,10 +307,12 @@
 
                 <!-- 宠物友好区域标记 -->
                 <div class="map-marker absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 interactive-element cursor-pointer group">
-                    <div class="w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-purple-50 border-2 border-purple-400">
-                        <i class="fas fa-store text-2xl text-purple-500"></i>
+                    <div class="map-marker-container">
+                        <div class="w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-purple-50 border-2 border-purple-400">
+                            <i class="fas fa-store text-2xl text-purple-500"></i>
+                        </div>
                     </div>
-                    <div class="hidden group-hover:block absolute top-full mt-2 bg-white p-3 rounded-lg shadow-lg text-sm min-w-[200px]">
+                    <div class="hidden group-hover:block absolute top-full mt-2 bg-white p-3 rounded-lg shadow-lg text-sm min-w-[200px] z-20">
                         <div class="flex items-center gap-2 mb-1">
                             <p class="font-bold text-purple-600">宠物友好商场</p>
                             <span class="bg-purple-100 text-purple-600 text-xs px-2 py-0.5 rounded-full">4.2分</span>
@@ -124,10 +327,12 @@
 
                 <!-- 宠物服务标记 -->
                 <div class="map-marker absolute top-1/4 right-1/4 transform -translate-x-1/2 -translate-y-1/2 interactive-element cursor-pointer group">
-                    <div class="w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-pink-50 border-2 border-pink-400">
-                        <i class="fas fa-heart text-2xl text-pink-500"></i>
+                    <div class="map-marker-container">
+                        <div class="w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-pink-50 border-2 border-pink-400">
+                            <i class="fas fa-heart text-2xl text-pink-500"></i>
+                        </div>
                     </div>
-                    <div class="hidden group-hover:block absolute top-full mt-2 bg-white p-3 rounded-lg shadow-lg text-sm min-w-[200px]">
+                    <div class="hidden group-hover:block absolute top-full mt-2 bg-white p-3 rounded-lg shadow-lg text-sm min-w-[200px] z-20">
                         <div class="flex items-center gap-2 mb-1">
                             <p class="font-bold text-pink-600">宠物服务中心</p>
                             <span class="bg-pink-100 text-pink-500 text-xs px-2 py-0.5 rounded-full">4.6分</span>
@@ -139,26 +344,14 @@
                         </div>
                     </div>
                 </div>
-                    <div class="hidden group-hover:block absolute top-full mt-2 bg-white p-2 rounded shadow-lg text-sm">
-                        <p class="font-bold">宠物用品店</p>
-                        <p class="text-gray-500">一站式宠物服务</p>
-                    </div>
-                </div>
-                    <div class="w-10 h-10 bg-pink-100 rounded-full shadow flex items-center justify-center">
-                        <i class="fas fa-bone text-xl text-pink-500"></i>
-                    </div>
-                </div>
                 
                 <!-- 模拟的地图底图 -->
                 <div class="absolute inset-0 grid grid-cols-8 grid-rows-8">
-                    <div class="col-span-8 row-span-8 border-2 border-blue-200 bg-blue-100/30"></div>
+                    <!-- Removed the previous background -->
                 </div>
-                <!-- 模拟的道路 -->
+                <!-- 模拟的道路 - 移除模拟道路，因为使用了真实地图图片 -->
                 <div class="absolute inset-0">
-                    <div class="w-full h-1 bg-white/50 absolute top-1/4"></div>
-                    <div class="w-full h-1 bg-white/50 absolute top-3/4"></div>
-                    <div class="w-1 h-full bg-white/50 absolute left-1/4"></div>
-                    <div class="w-1 h-full bg-white/50 absolute left-3/4"></div>
+                    <!-- Removed the simulated roads -->
                 </div>
             </div>
         </div>
@@ -192,5 +385,15 @@
             </a>
         </div>
     </div>
+
+    <script>
+        // 加载动画控制
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const splashScreen = document.getElementById('splashScreen');
+                splashScreen.classList.add('hide');
+            }, 3000); // 3秒后隐藏加载页面
+        });
+    </script>
 </body>
 </html>

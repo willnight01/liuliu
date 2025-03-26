@@ -2,18 +2,246 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>活动</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 隐藏所有滚动条 */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        * {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* 轮播样式优化 */
+        .banner-container {
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .banner-slide {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+        
+        /* 优化内容区域高度 */
+        .content-wrapper {
+            height: calc(100vh - 13rem);
+            overflow-y: auto;
+            padding-bottom: 5rem;
+        }
+        
+        /* 优化卡片布局 */
+        .activity-card {
+            margin-bottom: 0.75rem;
+        }
+        
+        /* 优化分类标签栏 */
+        .category-bar {
+            height: 2.75rem;
+            padding: 0.5rem 1rem;
+        }
+        
+        /* 优化日期选择器 */
+        .date-picker {
+            height: 2.5rem;
+            padding: 0.25rem 1rem;
+        }
+        
+        /* 优化筛选条件栏 */
+        .filter-bar {
+            height: 2.25rem;
+            padding: 0.25rem 1rem;
+        }
+        
+        /* 轮播样式 */
+        .banner-container {
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+        .banner-slide {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+        .banner-indicator {
+            transition: all 0.3s ease;
+        }
+        .banner-indicator.active {
+            width: 20px;
+            background-color: white;
+        }
+    </style>
 </head>
-<body class="h-screen flex flex-col bg-gray-100">
-    <!-- 顶部导航栏 -->
-    <div class="bg-white px-4 py-2 flex items-center justify-between shadow-sm">
-        <h1 class="font-bold text-lg">精彩活动</h1>
-        <button class="text-gray-600" onclick="toggleFilter()">
-            <i class="fas fa-filter text-xl"></i>
-        </button>
+<body class="h-screen flex flex-col bg-gray-100 overflow-hidden">
+    <!-- 顶部Banner轮播 -->
+    <div class="relative w-full h-28">
+        <div class="banner-container flex overflow-x-auto no-scrollbar relative" id="bannerContainer">
+            <!-- 轮播1 -->
+            <div class="banner-slide w-full flex-shrink-0">
+                <div class="bg-gradient-to-r from-blue-400 to-cyan-500 rounded-b-lg p-1.5 relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-0.5">
+                        <div class="pl-2">
+                            <h2 class="text-lg font-bold text-white leading-tight">遛遛&遛遛保</h2>
+                            <h3 class="text-base font-bold text-white leading-tight">运动安全周</h3>
+                        </div>
+                        <div class="bg-orange-500 text-white px-3 py-1 rounded-lg mr-2 relative">
+                            <span class="text-base font-bold">限时7天！</span>
+                            <div class="text-xs">3.24—3.30</div>
+                            <div class="text-xs">可<span class="text-yellow-300 font-bold">免费</span>体验保险一次</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <a href="#" class="bg-orange-500 text-white px-2 py-0.5 rounded-full text-xs mr-2">点击详情了解>>></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 轮播2 -->
+            <div class="banner-slide w-full flex-shrink-0">
+                <div class="bg-gradient-to-r from-green-400 to-emerald-500 rounded-b-lg p-1.5 relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-0.5">
+                        <div class="pl-2">
+                            <h2 class="text-lg font-bold text-white leading-tight">宠物健康月</h2>
+                            <h3 class="text-base font-bold text-white leading-tight">为爱宠体检</h3>
+                        </div>
+                        <div class="bg-yellow-500 text-white px-3 py-1 rounded-lg mr-2 relative">
+                            <span class="text-base font-bold">八折优惠</span>
+                            <div class="text-xs">本月内</div>
+                            <div class="text-xs">预约<span class="text-red-300 font-bold">免费</span>狗狗洗澡</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <a href="#" class="bg-yellow-500 text-white px-2 py-0.5 rounded-full text-xs mr-2">立即预约>>></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 轮播3 -->
+            <div class="banner-slide w-full flex-shrink-0">
+                <div class="bg-gradient-to-r from-purple-400 to-pink-500 rounded-b-lg p-1.5 relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-0.5">
+                        <div class="pl-2">
+                            <h2 class="text-lg font-bold text-white leading-tight">萌宠嘉年华</h2>
+                            <h3 class="text-base font-bold text-white leading-tight">宠友线下聚会</h3>
+                        </div>
+                        <div class="bg-indigo-500 text-white px-3 py-1 rounded-lg mr-2 relative">
+                            <span class="text-base font-bold">4月15日</span>
+                            <div class="text-xs">城市中心广场</div>
+                            <div class="text-xs">带上<span class="text-yellow-300 font-bold">爱宠</span>共同参与</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <a href="#" class="bg-indigo-500 text-white px-2 py-0.5 rounded-full text-xs mr-2">查看详情>>></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 轮播指示器 -->
+        <div class="absolute bottom-0.5 left-0 right-0 flex justify-center space-x-1 pb-0.5">
+            <div class="h-1 w-2 rounded-full bg-white/50 banner-indicator active" data-index="0"></div>
+            <div class="h-1 w-2 rounded-full bg-white/50 banner-indicator" data-index="1"></div>
+            <div class="h-1 w-2 rounded-full bg-white/50 banner-indicator" data-index="2"></div>
+        </div>
+        
+        <!-- 搜索栏 -->
+        <div class="absolute bottom-4 left-3 w-36 bg-white/80 backdrop-blur-sm rounded-full flex items-center pl-2.5 pr-1.5 py-1.5 shadow-sm border border-gray-200/70">
+            <i class="fas fa-search text-gray-400 text-xs"></i>
+            <input type="text" placeholder="搜活动/俱乐部" class="ml-1.5 text-xs w-full bg-transparent border-none focus:outline-none text-gray-700">
+        </div>
+    </div>
+    
+    <!-- 分类标签栏 - 压缩高度和优化间距 -->
+    <div class="category-bar flex space-x-4 overflow-x-auto whitespace-nowrap bg-white border-b border-gray-100">
+        <div class="flex items-center flex-shrink-0">
+            <div class="w-6 h-6 bg-yellow-100 rounded-full flex items-center justify-center">
+                <i class="fas fa-star text-yellow-500 text-xs"></i>
+            </div>
+            <span class="text-xs text-gray-700 ml-1">推荐</span>
+        </div>
+        <div class="flex items-center flex-shrink-0">
+            <div class="w-6 h-6 bg-cyan-100 rounded-full flex items-center justify-center">
+                <i class="fas fa-paw text-cyan-500 text-xs"></i>
+            </div>
+            <span class="text-xs text-gray-700 ml-1">遛狗</span>
+        </div>
+        <div class="flex items-center flex-shrink-0">
+            <div class="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center">
+                <i class="fas fa-dog text-orange-500 text-xs"></i>
+            </div>
+            <span class="text-xs text-gray-700 ml-1">训练</span>
+        </div>
+        <div class="flex items-center flex-shrink-0">
+            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+                <i class="fas fa-bone text-green-500 text-xs"></i>
+            </div>
+            <span class="text-xs text-gray-700 ml-1">喂养</span>
+        </div>
+        <div class="flex items-center flex-shrink-0">
+            <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                <i class="fas fa-heart text-blue-500 text-xs"></i>
+            </div>
+            <span class="text-xs text-gray-700 ml-1">社交</span>
+        </div>
+        <div class="flex items-center flex-shrink-0">
+            <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center">
+                <i class="fas fa-clinic-medical text-purple-500 text-xs"></i>
+            </div>
+            <span class="text-xs text-gray-700 ml-1">健康</span>
+        </div>
+    </div>
+    
+    <!-- 日期选择器 - 优化高度和间距 -->
+    <div class="date-picker flex space-x-4 overflow-x-auto bg-white border-b border-gray-100">
+        <div class="flex flex-col">
+            <span class="text-xs text-gray-500">周四</span>
+            <span class="text-sm font-bold">03</span>
+        </div>
+        <div class="flex flex-col">
+            <span class="text-xs text-gray-500">周五</span>
+            <span class="text-sm font-bold">04</span>
+        </div>
+        <div class="flex flex-col">
+            <span class="text-xs text-gray-500">周六</span>
+            <span class="text-sm font-bold">05</span>
+        </div>
+        <div class="flex flex-col">
+            <span class="text-xs text-gray-500">周日</span>
+            <span class="text-sm font-bold">06</span>
+        </div>
+        <div class="flex flex-col">
+            <span class="text-xs text-gray-500">周一</span>
+            <span class="text-sm font-bold">07</span>
+        </div>
+        <div class="flex flex-col">
+            <span class="text-xs text-gray-500">周二</span>
+            <span class="text-sm font-bold">08</span>
+        </div>
+        <div class="flex flex-col">
+            <span class="text-xs text-gray-500">周三</span>
+            <span class="text-sm font-bold">09</span>
+        </div>
+    </div>
+    
+    <!-- 筛选条件栏 - 优化高度 -->
+    <div class="filter-bar bg-white flex justify-between items-center border-b border-gray-200">
+        <div class="flex items-center">
+            <span class="text-sm text-gray-700">智能排序</span>
+            <i class="fas fa-chevron-down ml-1 text-gray-500 text-xs"></i>
+        </div>
+        <div class="flex items-center">
+            <span class="text-sm text-gray-700">全城</span>
+            <i class="fas fa-chevron-down ml-1 text-gray-500 text-xs"></i>
+        </div>
+        <div class="flex items-center">
+            <span class="text-sm text-gray-700">上海</span>
+            <i class="fas fa-chevron-down ml-1 text-gray-500 text-xs"></i>
+        </div>
     </div>
 
     <!-- 过滤面板 -->
@@ -44,169 +272,241 @@
         </div>
     </div>
 
-    <!-- 内容区域 -->
-    <div class="flex-1 overflow-y-auto">
-        <div class="p-4 space-y-4">
-            <!-- 遛狗交友活动 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1" alt="活动图片" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">遛狗交友</span>
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">新手友好</span>
+    <!-- 内容区域 - 自适应高度 -->
+    <div class="content-wrapper">
+        <div class="p-3 space-y-2">
+            <!-- 遛狗交友活动 - 原风格 -->
+            <div class="activity-card bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-3">
+                    <div class="flex justify-between">
+                        <h3 class="text-lg font-bold">周末遛狗交友派对</h3>
+                        <span class="text-lg font-bold text-rose-500">¥88</span>
                     </div>
-                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
-                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-paw text-sm text-blue-500"></i>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>城市公园遛狗场 | 3.5km</span>
+                    </div>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="far fa-clock mr-2"></i>
+                        <span>2023年12月16日 14:00-16:00</span>
+                    </div>
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex -space-x-2">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <div class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs text-gray-500">+9</div>
                         </div>
-                        <span class="text-sm text-gray-600">城市遛狗俱乐部</span>
-                    </a>
-                    <h3 class="text-lg font-bold mb-2">周末遛狗交友派对</h3>
-                    <div class="text-gray-600 text-sm space-y-1">
-                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月16日 14:00-16:00</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>城市公园遛狗场</p>
-                        <p><i class="fas fa-users mr-2"></i>已报名 12/20 人</p>
+                        <span class="text-cyan-500 font-medium text-sm">新手友好</span>
                     </div>
-                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                        立即报名
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1" class="w-6 h-6 rounded-full object-cover mr-2">
+                            <span class="text-xs text-gray-600">城市遛狗俱乐部</span>
+                        </div>
+                        <button onclick="goToSignup(this)" class="bg-cyan-500 text-white px-5 py-1.5 rounded-full text-xs font-medium hover:bg-cyan-600 transition-colors">
+                            去报名
                     </button>
+                    </div>
                 </div>
             </div>
 
+            <!-- 其他保持原样的活动卡片 -->
             <!-- 训练课程活动 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb" alt="活动图片" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">训练课程</span>
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">专业指导</span>
+            <div class="activity-card bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-3">
+                    <div class="flex justify-between">
+                        <h3 class="text-lg font-bold">宠物训练大师课</h3>
+                        <span class="text-lg font-bold text-rose-500">¥120</span>
                     </div>
-                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
-                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-graduation-cap text-sm text-blue-500"></i>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>宠物训练中心 | 4.1km</span>
+                    </div>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="far fa-clock mr-2"></i>
+                        <span>2023年12月17日 10:00-12:00</span>
+                    </div>
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex -space-x-2">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <div class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs text-gray-500">+5</div>
                         </div>
-                        <span class="text-sm text-gray-600">宠物训练学院</span>
-                    </a>
-                    <h3 class="text-lg font-bold mb-2">宠物训练大师课</h3>
-                    <div class="text-gray-600 text-sm space-y-1">
-                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月17日 10:00-12:00</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>宠物训练中心</p>
-                        <p><i class="fas fa-users mr-2"></i>已报名 8/15 人</p>
+                        <div class="bg-orange-100 text-orange-500 px-1.5 py-0.5 rounded-lg text-xs">
+                            专业指导
+                        </div>
                     </div>
-                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                        立即报名
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb" class="w-6 h-6 rounded-full object-cover mr-2">
+                            <span class="text-xs text-gray-600">宠物训练学院</span>
+                        </div>
+                            <button onclick="goToSignup(this)" class="bg-cyan-500 text-white px-5 py-1.5 rounded-full text-xs font-medium hover:bg-cyan-600 transition-colors">
+                            去报名
                     </button>
+                    </div>
                 </div>
             </div>
 
+            <!-- 其他活动卡片保持原样 -->
             <!-- 交友社交活动 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f" alt="活动图片" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">交友社交</span>
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">轻松交友</span>
+            <div class="activity-card bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-3">
+                    <div class="flex justify-between">
+                        <h3 class="text-lg font-bold">宠物主题下午茶</h3>
+                        <span class="text-lg font-bold text-rose-500">¥68</span>
                     </div>
-                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
-                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-heart text-sm text-blue-500"></i>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>宠物友好咖啡厅 | 2.8km</span>
+                    </div>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="far fa-clock mr-2"></i>
+                        <span>2023年12月18日 14:30-17:00</span>
+                    </div>
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex -space-x-2">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <div class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs text-gray-500">+12</div>
                         </div>
-                        <span class="text-sm text-gray-600">宠物爱好者社区</span>
-                    </a>
-                    <h3 class="text-lg font-bold mb-2">宠物主题下午茶</h3>
-                    <div class="text-gray-600 text-sm space-y-1">
-                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月18日 14:30-17:00</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>宠物友好咖啡厅</p>
-                        <p><i class="fas fa-users mr-2"></i>已报名 15/25 人</p>
+                        <div class="bg-blue-100 text-blue-500 px-1.5 py-0.5 rounded-lg text-xs">
+                            轻松交友
+                        </div>
                     </div>
-                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                        立即报名
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f" class="w-6 h-6 rounded-full object-cover mr-2">
+                            <span class="text-xs text-gray-600">宠物爱好者社区</span>
+                        </div>
+                        <button onclick="goToSignup(this)" class="bg-cyan-500 text-white px-5 py-1.5 rounded-full text-xs font-medium hover:bg-cyan-600 transition-colors">
+                            去报名
                     </button>
+                    </div>
                 </div>
             </div>
 
             <!-- 宠物救助活动 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e" alt="活动图片" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">宠物救助</span>
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">志愿服务</span>
+            <div class="activity-card bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-3">
+                    <div class="flex justify-between">
+                        <h3 class="text-lg font-bold">流浪动物救助行动</h3>
+                        <span class="text-lg font-bold text-rose-500">¥0</span>
                     </div>
-                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
-                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-hand-holding-heart text-sm text-blue-500"></i>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>城市流浪动物救助站 | 5.3km</span>
+                    </div>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="far fa-clock mr-2"></i>
+                        <span>2023年12月19日 09:00-12:00</span>
+                    </div>
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex -space-x-2">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <div class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs text-gray-500">+17</div>
                         </div>
-                        <span class="text-sm text-gray-600">爱心救助联盟</span>
-                    </a>
-                    <h3 class="text-lg font-bold mb-2">流浪动物救助行动</h3>
-                    <div class="text-gray-600 text-sm space-y-1">
-                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月19日 09:00-12:00</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>城市流浪动物救助站</p>
-                        <p><i class="fas fa-users mr-2"></i>已报名 20/30 人</p>
+                        <div class="bg-green-100 text-green-500 px-1.5 py-0.5 rounded-lg text-xs">
+                            志愿服务
+                        </div>
                     </div>
-                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                        立即报名
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e" class="w-6 h-6 rounded-full object-cover mr-2">
+                            <span class="text-xs text-gray-600">爱心救助联盟</span>
+                        </div>
+                        <button onclick="goToSignup(this)" class="bg-cyan-500 text-white px-5 py-1.5 rounded-full text-xs font-medium hover:bg-cyan-600 transition-colors">
+                            去报名
                     </button>
+                    </div>
                 </div>
             </div>
 
             <!-- 徒步郊游活动 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1544776193-352d25ca82cd" alt="活动图片" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">徒步郊游</span>
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">户外探索</span>
+            <div class="activity-card bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-3">
+                    <div class="flex justify-between">
+                        <h3 class="text-lg font-bold">宠物主人郊游日</h3>
+                        <span class="text-lg font-bold text-rose-500">¥128</span>
                     </div>
-                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
-                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-mountain text-sm text-blue-500"></i>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>郊野公园 | 15.2km</span>
+                    </div>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="far fa-clock mr-2"></i>
+                        <span>2023年12月20日 08:30-16:00</span>
+                    </div>
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex -space-x-2">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <div class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs text-gray-500">+15</div>
                         </div>
-                        <span class="text-sm text-gray-600">户外探险俱乐部</span>
-                    </a>
-                    <h3 class="text-lg font-bold mb-2">宠物主人郊游日</h3>
-                    <div class="text-gray-600 text-sm space-y-1">
-                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月20日 08:30-16:00</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>郊野公园</p>
-                        <p><i class="fas fa-users mr-2"></i>已报名 18/25 人</p>
+                        <div class="bg-yellow-100 text-yellow-600 px-1.5 py-0.5 rounded-lg text-xs">
+                            户外探索
+                        </div>
                     </div>
-                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                        立即报名
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1544776193-352d25ca82cd" class="w-6 h-6 rounded-full object-cover mr-2">
+                            <span class="text-xs text-gray-600">户外探险俱乐部</span>
+                        </div>
+                        <button onclick="goToSignup(this)" class="bg-cyan-500 text-white px-5 py-1.5 rounded-full text-xs font-medium hover:bg-cyan-600 transition-colors">
+                            去报名
                     </button>
+                    </div>
                 </div>
             </div>
 
             <!-- 宠物领养活动 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" alt="活动图片" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <div class="flex items-center gap-2 text-blue-500 text-sm mb-2">
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">宠物领养</span>
-                        <span class="px-2 py-1 bg-blue-50 rounded-full">爱心助养</span>
+            <div class="activity-card bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-3">
+                    <div class="flex justify-between">
+                        <h3 class="text-lg font-bold">爱心领养日</h3>
+                        <span class="text-lg font-bold text-rose-500">¥0</span>
                     </div>
-                    <a href="club-detail.html" class="flex items-center gap-2 mb-2">
-                        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-home text-sm text-blue-500"></i>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>宠物领养中心 | 8.6km</span>
+                    </div>
+                    <div class="mt-1 flex items-center text-gray-500 text-sm">
+                        <i class="far fa-clock mr-2"></i>
+                        <span>2023年12月21日 10:00-17:00</span>
+                    </div>
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex -space-x-2">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857" class="w-6 h-6 rounded-full border-2 border-white object-cover">
+                            <div class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs text-gray-500">+22</div>
                         </div>
-                        <span class="text-sm text-gray-600">宠物之家</span>
-                    </a>
-                    <h3 class="text-lg font-bold mb-2">爱心领养日</h3>
-                    <div class="text-gray-600 text-sm space-y-1">
-                        <p><i class="far fa-calendar-alt mr-2"></i>2023年12月21日 10:00-17:00</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>宠物领养中心</p>
-                        <p><i class="fas fa-users mr-2"></i>已报名 25/40 人</p>
+                        <div class="bg-pink-100 text-pink-500 px-1.5 py-0.5 rounded-lg text-xs">
+                            爱心助养
+                        </div>
                     </div>
-                    <button onclick="goToSignup(this)" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                        立即报名
+                    <div class="mt-2 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" class="w-6 h-6 rounded-full object-cover mr-2">
+                            <span class="text-xs text-gray-600">宠物之家</span>
+                        </div>
+                        <button onclick="goToSignup(this)" class="bg-cyan-500 text-white px-5 py-1.5 rounded-full text-xs font-medium hover:bg-cyan-600 transition-colors">
+                            去报名
                     </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 底部导航栏 -->
-    <div class="bg-white shadow-lg">
+    <!-- 底部导航栏 - 固定高度和优化布局 -->
+    <div class="bg-white shadow-lg fixed bottom-0 left-0 right-0">
         <div class="flex justify-around items-center py-1.5 relative">
             <a href="home.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
                 <i class="fas fa-map-marked-alt text-xl"></i>
@@ -244,14 +544,15 @@
             const typeFilter = document.getElementById('typeFilter').value;
             
             // 获取所有活动卡片
-            const activityCards = document.querySelectorAll('.bg-white.rounded-lg.shadow-md');
+            const activityCards = document.querySelectorAll('.activity-card');
             
             activityCards.forEach(card => {
                 let show = true;
                 
                 // 根据活动类型过滤
                 if (typeFilter !== 'all') {
-                    const activityType = card.querySelector('.text-blue-500.text-sm span').textContent;
+                    const activityType = card.querySelector('.text-blue-500.text-sm span')?.textContent;
+                    if (activityType) { // 只过滤有活动类型标签的卡片
                     const typeMap = {
                         'walking': '遛狗交友',
                         'training': '训练课程',
@@ -262,16 +563,19 @@
                     };
                     if (!activityType.includes(typeMap[typeFilter])) {
                         show = false;
+                        }
                     }
                 }
                 
                 // 根据报名状态过滤
                 if (statusFilter !== 'all' && show) {
                     const button = card.querySelector('button');
-                    const isRegistered = button.textContent.trim() !== '立即报名';
+                    if (button) {
+                        const isRegistered = button.textContent.trim() !== '立即报名' && button.textContent.trim() !== '去报名';
                     if ((statusFilter === 'registered' && !isRegistered) ||
                         (statusFilter === 'unregistered' && isRegistered)) {
                         show = false;
+                        }
                     }
                 }
                 
@@ -288,7 +592,7 @@
             document.getElementById('typeFilter').value = 'all';
             
             // 显示所有活动卡片
-            const activityCards = document.querySelectorAll('.bg-white.rounded-lg.shadow-md');
+            const activityCards = document.querySelectorAll('.activity-card');
             activityCards.forEach(card => {
                 card.style.display = 'block';
             });
@@ -298,24 +602,92 @@
         }
 
         function goToSignup(button) {
-            const card = button.closest('.bg-white.rounded-lg.shadow-md');
-            const image = card.querySelector('img').src;
-            const [type, tag] = card.querySelectorAll('.text-blue-500.text-sm span');
+            const card = button.closest('.activity-card');
+            const image = card.querySelector('img')?.src || '';
+            const type = card.querySelector('.text-blue-500.text-sm span')?.textContent || '遛狗活动';
+            const tag = card.querySelectorAll('.text-blue-500.text-sm span')?.[1]?.textContent || '新手友好';
             const title = card.querySelector('h3').textContent;
-            const [time, location, participants] = card.querySelectorAll('.text-gray-600.text-sm p');
+            
+            // 根据卡片样式选择不同的数据获取方式
+            let time, location, participants;
+            
+            if (card.querySelector('.text-gray-600.text-sm.space-y-1')) { // 旧卡片样式
+                [time, location, participants] = card.querySelectorAll('.text-gray-600.text-sm.space-y-1 p');
+                time = time.textContent.replace(/^.*?\s/, '');
+                location = location.textContent.replace(/^.*?\s/, '');
+                participants = participants.textContent.replace(/^.*?\s/, '');
+            } else { // 新卡片样式
+                const timeEl = card.querySelectorAll('.text-gray-500')[1];
+                const locationEl = card.querySelectorAll('.text-gray-500')[0];
+                time = timeEl.textContent.trim();
+                location = locationEl.textContent.trim().split('|')[0].trim();
+                participants = '已报名 15/30 人'; // 默认值
+            }
 
             const params = new URLSearchParams({
                 image: image,
-                type: type.textContent,
-                tag: tag.textContent,
+                type: type,
+                tag: tag,
                 title: title,
-                time: time.textContent.replace(/^.*?\s/, ''),
-                location: location.textContent.replace(/^.*?\s/, ''),
-                participants: participants.textContent.replace(/^.*?\s/, '')
+                time: time,
+                location: location,
+                participants: participants
             });
 
             window.location.href = `activity-signup.html?${params.toString()}`;
         }
+
+        // 添加轮播功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('bannerContainer');
+            const indicators = document.querySelectorAll('.banner-indicator');
+            let currentIndex = 0;
+            
+            // 自动轮播
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % 3;
+                scrollToSlide(currentIndex);
+            }, 5000);
+            
+            // 滚动到指定幻灯片
+            function scrollToSlide(index) {
+                const slideWidth = container.clientWidth;
+                container.scrollTo({
+                    left: slideWidth * index,
+                    behavior: 'smooth'
+                });
+                updateIndicators(index);
+            }
+            
+            // 更新指示器状态
+            function updateIndicators(index) {
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('active');
+                });
+                indicators[index].classList.add('active');
+            }
+            
+            // 滚动事件监听
+            container.addEventListener('scroll', function() {
+                const slideWidth = container.clientWidth;
+                const scrollPosition = container.scrollLeft;
+                const index = Math.round(scrollPosition / slideWidth);
+                
+                if (index !== currentIndex) {
+                    currentIndex = index;
+                    updateIndicators(currentIndex);
+                }
+            });
+            
+            // 点击指示器跳转
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    currentIndex = index;
+                    scrollToSlide(index);
+                });
+            });
+        });
     </script>
 </body>
 </html>

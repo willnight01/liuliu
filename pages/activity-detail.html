@@ -16,103 +16,168 @@
             </a>
             <h1 class="font-bold text-lg">活动详情</h1>
         </div>
-        <button class="text-gray-600">
-            <i class="fas fa-share text-xl"></i>
-        </button>
+        <div class="flex items-center gap-3">
+            <button class="text-gray-600">
+                <i class="fas fa-ellipsis-h text-xl"></i>
+            </button>
+            <button class="text-gray-600">
+                <i class="fas fa-share text-xl"></i>
+            </button>
+        </div>
     </div>
 
     <!-- 内容区域 -->
     <div class="flex-1 overflow-y-auto">
-        <!-- 活动封面图 -->
-        <div class="relative">
-            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1" alt="活动封面" class="w-full h-48 object-cover">
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                <div class="flex items-center gap-2 text-white text-sm mb-2">
-                    <span class="px-2 py-1 bg-blue-500/50 rounded-full">遛狗活动</span>
-                    <span class="px-2 py-1 bg-blue-500/50 rounded-full">新手友好</span>
+        <!-- 活动标题和价格 -->
+        <div class="bg-white p-4 mb-2">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h2 class="text-2xl font-bold">单打！单打！单打</h2>
+                    <div class="flex mt-1 items-center gap-2">
+                        <span class="px-2 py-1 bg-cyan-50 rounded-full text-xs text-cyan-500">羽毛球</span>
+                        <span class="px-2 py-1 bg-green-50 rounded-full text-xs text-green-500">初级-高级</span>
+                    </div>
                 </div>
-                <h2 class="text-xl font-bold text-white">周末遛狗欢乐行</h2>
+                <span class="text-2xl font-bold text-rose-500">¥80</span>
             </div>
         </div>
 
-        <!-- 活动信息 -->
-        <div class="p-4 space-y-6">
-            <!-- 主办方信息 -->
-            <div class="bg-white rounded-lg p-4">
-                <a href="club-detail.html" class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-paw text-2xl text-blue-500"></i>
+        <!-- 基本信息 -->
+        <div class="bg-white p-4 space-y-3 mb-2">
+            <div class="flex items-center gap-3 text-gray-600">
+                <i class="far fa-calendar-alt text-cyan-500 w-5 text-center"></i>
+                <span>03月27日 周四 20:00-22:00</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-600">
+                <i class="fas fa-map-marker-alt text-red-500 w-5 text-center"></i>
+                <div class="flex-1">
+                    <div>大咖羽毛球馆(松江店)</div>
+                    <div class="text-sm text-gray-400">上海市松江区松江大学城文汇路300号</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+            <div class="flex items-center gap-3 text-gray-600">
+                <i class="fas fa-users text-green-500 w-5 text-center"></i>
+                <div>已报名 46/66 人</div>
+            </div>
+        </div>
+
+        <!-- 主办方信息 -->
+        <div class="bg-white p-4 mb-2">
+            <a href="club-detail.html" class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4" class="w-full h-full object-cover" alt="俱乐部logo">
+                </div>
+                <div class="flex-1">
+                    <h4 class="font-medium">有你真好羽毛球俱乐部</h4>
+                    <p class="text-sm text-gray-500">已举办 235 场活动</p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </a>
+        </div>
+
+        <!-- 参与者列表 -->
+        <div class="bg-white p-4 mb-2">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="font-bold">参与者</h3>
+                <div class="flex items-center">
+                    <span class="text-sm text-gray-500">46/66</span>
+                    <i class="fas fa-chevron-right text-gray-400 ml-1"></i>
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-1.5">
+                <div class="flex flex-col items-center px-1.5 mb-2 w-1/6">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                    <span class="text-xs mt-1 truncate w-full text-center">张小明</span>
+                </div>
+                <div class="flex flex-col items-center px-1.5 mb-2 w-1/6">
+                    <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                    <span class="text-xs mt-1 truncate w-full text-center">李明</span>
+                </div>
+                <div class="flex flex-col items-center px-1.5 mb-2 w-1/6">
+                    <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                    <span class="text-xs mt-1 truncate w-full text-center">王丽</span>
+                </div>
+                <div class="flex flex-col items-center px-1.5 mb-2 w-1/6">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                    <span class="text-xs mt-1 truncate w-full text-center">赵强</span>
+                </div>
+                <div class="flex flex-col items-center px-1.5 mb-2 w-1/6">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                    <span class="text-xs mt-1 truncate w-full text-center">小红</span>
+                </div>
+                <div class="flex flex-col items-center px-1.5 mb-2 w-1/6">
+                    <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                        <span class="text-xs text-gray-500">+41</span>
                     </div>
+                    <span class="text-xs mt-1 text-gray-400">更多</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 活动详情 -->
+        <div class="bg-white p-4 mb-2">
+            <h3 class="font-bold mb-3">活动详情</h3>
+            <div class="text-gray-600 space-y-4">
+                <div>
+                    <p class="font-medium text-gray-800">场地详情</p>
+                    <p class="mt-1 text-sm">6片羽毛球场地，标准木地板，室内空调，更衣室、淋浴设施齐全</p>
+                </div>
+                <div>
+                    <p class="font-medium text-gray-800">参加要求</p>
+                    <p class="mt-1 text-sm">1. 水平不限，以娱乐为主<br>2. 请自备球拍<br>3. 穿专业羽毛球鞋或其他防滑运动鞋</p>
+                </div>
+                <div>
+                    <p class="font-medium text-gray-800">活动流程</p>
+                    <p class="mt-1 text-sm">19:50-20:00 签到<br>20:00-22:00 自由组队/自由打球<br>22:00 活动结束</p>
+                </div>
+                <div>
+                    <p class="font-medium text-gray-800">费用说明</p>
+                    <p class="mt-1 text-sm">每人80元，包含场地费和基础球费，非会员需另付5元保险费</p>
+                </div>
+                <div>
+                    <p class="font-medium text-gray-800">退改规则</p>
+                    <p class="mt-1 text-sm">活动开始前24小时内取消，收取50%费用<br>活动开始前12小时内取消，不予退款</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 相关推荐 -->
+        <div class="bg-white p-4 mb-6">
+            <h3 class="font-bold mb-3">相关推荐</h3>
+            <div class="space-y-4">
+                <div class="flex gap-3">
+                    <img src="https://images.unsplash.com/photo-1562552052-c1f625482d88" alt="活动图片" class="w-20 h-20 rounded-lg object-cover">
                     <div class="flex-1">
-                        <h4 class="font-medium">城市遛狗俱乐部</h4>
-                        <p class="text-sm text-gray-500">一起遛狗，分享快乐</p>
+                        <h4 class="font-medium text-sm">周末羽毛球俱乐部活动</h4>
+                        <p class="text-xs text-gray-500 mt-1">03月29日 10:00-12:00</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-sm font-bold text-rose-500">¥65</span>
+                            <span class="text-xs text-gray-500">12人已报名</span>
+                        </div>
                     </div>
-                    <i class="fas fa-chevron-right text-gray-400"></i>
-                </a>
-            </div>
-
-            <!-- 基本信息 -->
-            <div class="bg-white rounded-lg p-4 space-y-3">
-                <div class="flex items-center gap-3 text-gray-600">
-                    <i class="far fa-calendar-alt text-blue-500"></i>
-                    <span>2023年12月16日 14:00-16:00</span>
                 </div>
-                <div class="flex items-center gap-3 text-gray-600">
-                    <i class="fas fa-map-marker-alt text-red-500"></i>
-                    <span>城市公园遛狗场</span>
-                </div>
-                <div class="flex items-center gap-3 text-gray-600">
-                    <i class="fas fa-users text-green-500"></i>
-                    <span>已报名 12/20 人</span>
-                </div>
-            </div>
-
-            <!-- 主办方信息 -->
-            <div class="bg-white rounded-lg p-4">
-                <h3 class="font-bold mb-3">主办方</h3>
-                <a href="club-detail.html" class="flex items-center gap-3">
-                    <img src="https://images.unsplash.com/photo-1550184658-ff6132a71714" alt="俱乐部logo" class="w-12 h-12 rounded-lg object-cover">
-                    <div>
-                        <h4 class="font-medium">汪星人俱乐部</h4>
-                        <p class="text-sm text-gray-500">已举办 23 场活动</p>
+                <div class="flex gap-3">
+                    <img src="https://images.unsplash.com/photo-1615696911336-ff6aa1d4d81d" alt="活动图片" class="w-20 h-20 rounded-lg object-cover">
+                    <div class="flex-1">
+                        <h4 class="font-medium text-sm">训练营：提升你的羽毛球水平</h4>
+                        <p class="text-xs text-gray-500 mt-1">04月03日 14:00-16:00</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-sm font-bold text-rose-500">¥120</span>
+                            <span class="text-xs text-gray-500">8人已报名</span>
+                        </div>
                     </div>
-                    <i class="fas fa-chevron-right text-gray-400 ml-auto"></i>
-                </a>
-            </div>
-
-            <!-- 活动详情 -->
-            <div class="bg-white rounded-lg p-4">
-                <h3 class="font-bold mb-3">活动详情</h3>
-                <div class="text-gray-600 space-y-2">
-                    <p>🐕 活动介绍：</p>
-                    <p>周末带上你的爱犬一起来城市公园遛狗吧！专业训犬师将现场指导大家如何正确遛狗，让遛狗变得更有趣、更有意义。</p>
-                    <p>📋 活动流程：</p>
-                    <p>14:00-14:30 签到集合<br>14:30-15:30 遛狗技巧指导<br>15:30-16:00 自由活动&合影</p>
-                    <p>🎁 活动福利：</p>
-                    <p>- 精美狗狗零食一份<br>- 专业训犬师一对一指导<br>- 结识更多爱狗人士</p>
-                </div>
-            </div>
-
-            <!-- 参与者列表 -->
-            <div class="bg-white rounded-lg p-4">
-                <div class="flex items-center justify-between mb-3">
-                    <h3 class="font-bold">参与者</h3>
-                    <span class="text-sm text-gray-500">12/20</span>
-                </div>
-                <div class="flex flex-wrap gap-3">
-                    <div class="flex flex-col items-center">
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="用户头像" class="w-12 h-12 rounded-full object-cover">
-                        <span class="text-xs mt-1">张小明</span>
-                    </div>
-                    <!-- 更多参与者 -->
                 </div>
             </div>
         </div>
     </div>
 
     <!-- 底部报名按钮 -->
-    <div class="bg-white p-4 shadow-lg">
-        <button class="w-full bg-blue-500 text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition-colors">
+    <div class="bg-white p-4 shadow-lg flex items-center gap-4">
+        <a href="club-detail.html" class="flex flex-col items-center justify-center w-12 h-12 border-2 border-gray-200 rounded-full">
+            <i class="fas fa-home text-gray-500"></i>
+        </a>
+        <button class="flex-1 bg-cyan-500 text-white py-3 rounded-full font-medium hover:bg-cyan-600 transition-colors">
             立即报名
         </button>
     </div>

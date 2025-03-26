@@ -2,14 +2,56 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>我的</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 隐藏所有滚动条 */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        * {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* 优化内容区域高度 */
+        .content-wrapper {
+            height: calc(100vh - 8.5rem);
+            overflow-y: auto;
+            padding-bottom: 5rem;
+        }
+        
+        /* 优化卡片布局 */
+        .module-card {
+            margin-bottom: 0.75rem;
+        }
+        
+        /* 优化动画效果 */
+        .bounce-icon {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .pulse-icon {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+    </style>
 </head>
-<body class="h-screen flex flex-col bg-gray-100">
+<body class="h-screen flex flex-col bg-gray-100 overflow-hidden">
     <!-- 顶部导航栏 -->
-    <div class="bg-white px-4 py-2 flex items-center justify-between shadow-sm">
+    <div class="bg-white px-4 py-2.5 flex items-center justify-between shadow-sm">
         <h1 class="font-bold text-lg">我的</h1>
         <button class="text-gray-600">
             <i class="fas fa-cog text-xl"></i>
@@ -17,9 +59,9 @@
     </div>
 
     <!-- 内容区域 -->
-    <div class="flex-1 overflow-y-auto">
+    <div class="content-wrapper">
         <!-- 用户信息卡片 -->
-        <div class="bg-white p-4 mb-4">
+        <div class="bg-white p-4 mb-3 shadow-sm">
             <div class="flex items-center gap-4">
                 <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="用户头像" class="w-16 h-16 rounded-full object-cover border-2 border-blue-500">
                 <div>
@@ -30,34 +72,34 @@
         </div>
 
         <!-- 功能模块 -->
-        <div class="bg-white mb-4">
-            <div class="grid grid-cols-3 gap-4 p-4 border-b">
+        <div class="bg-white mb-3 shadow-sm">
+            <div class="grid grid-cols-4 gap-2 p-4 border-b">
                 <a href="pet-list.html" class="flex flex-col items-center">
                     <i class="fas fa-dog text-2xl text-yellow-500 mb-1"></i>
-                    <span class="text-sm">我的宠物</span>
-                    <span class="text-xs text-gray-500 mt-1">2只</span>
+                    <span class="text-xs">我的宠物</span>
+                    <span class="text-xs text-gray-500">2只</span>
                 </a>
                 <a href="club-list.html" class="flex flex-col items-center">
                     <i class="fas fa-users text-2xl text-blue-500 mb-1"></i>
-                    <span class="text-sm">俱乐部</span>
-                    <span class="text-xs text-gray-500 mt-1">3个</span>
+                    <span class="text-xs">俱乐部</span>
+                    <span class="text-xs text-gray-500">3个</span>
                 </a>
                 <a href="activities.html" class="flex flex-col items-center">
                     <i class="fas fa-calendar-check text-2xl text-purple-500 mb-1"></i>
-                    <span class="text-sm">活动</span>
-                    <span class="text-xs text-gray-500 mt-1">5次</span>
+                    <span class="text-xs">活动</span>
+                    <span class="text-xs text-gray-500">5次</span>
                 </a>
                 <div class="flex flex-col items-center">
                     <i class="fas fa-clock text-2xl text-green-500 mb-1"></i>
-                    <span class="text-sm">遛狗时长</span>
-                    <span class="text-xs text-gray-500 mt-1">12h</span>
+                    <span class="text-xs">遛狗时长</span>
+                    <span class="text-xs text-gray-500">12h</span>
                 </div>
             </div>
 
 
             <!-- 我的行程 -->
             <div class="p-4">
-                <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center gap-3">
                         <i class="fas fa-calendar-alt text-blue-500"></i>
                         <span class="font-medium">我的行程</span>
@@ -69,7 +111,7 @@
                     <div class="bg-blue-50 p-3 rounded-lg hover:shadow-md transition-shadow">
                         <div class="flex items-center gap-3 mb-2">
                             <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-                                <i class="fas fa-paw text-white text-lg animate-bounce"></i>
+                                <i class="fas fa-paw text-white text-lg bounce-icon"></i>
                             </div>
                             <div>
                                 <h3 class="font-medium">城市公园遛狗</h3>
@@ -85,7 +127,7 @@
                     <div class="bg-green-50 p-3 rounded-lg hover:shadow-md transition-shadow">
                         <div class="flex items-center gap-3 mb-2">
                             <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                                <i class="fas fa-bone text-white text-lg animate-pulse"></i>
+                                <i class="fas fa-bone text-white text-lg pulse-icon"></i>
                             </div>
                             <div>
                                 <h3 class="font-medium">宠物训练课程</h3>
@@ -99,12 +141,43 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- 最近活动记录 -->
+            <div class="p-4 border-t">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-history text-purple-500"></i>
+                        <span class="font-medium">历史记录</span>
+                    </div>
+                    <button class="text-blue-500 text-sm">查看全部</button>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-paw text-yellow-500 text-xs"></i>
+                            </div>
+                            <span class="text-sm">昨天遛狗30分钟</span>
+                        </div>
+                        <span class="text-xs text-gray-500">昨天</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-dog text-blue-500 text-xs"></i>
+                            </div>
+                            <span class="text-sm">参加训练课程</span>
+                        </div>
+                        <span class="text-xs text-gray-500">前天</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- 底部导航栏 -->
-    <div class="bg-white shadow-lg">
-        <div class="flex justify-around items-center py-1.5">
+    <div class="bg-white shadow-lg fixed bottom-0 left-0 right-0">
+        <div class="flex justify-around items-center py-1.5 relative">
             <a href="home.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
                 <i class="fas fa-map-marked-alt text-xl"></i>
                 <span class="text-xs mt-1">地图</span>
@@ -113,6 +186,7 @@
                 <i class="fas fa-list text-xl"></i>
                 <span class="text-xs mt-1">列表</span>
             </a>
+            <!-- 中间的Logo按钮 -->
             <a href="activities.html" class="flex flex-col items-center">
                 <div class="w-20 h-20 flex items-center justify-center -mt-8">
                     <img src="assets/logo.svg" alt="遛遛" class="w-full h-full">
@@ -120,12 +194,12 @@
                 <span class="text-xs mt-1 text-blue-500">活动</span>
             </a>
             <a href="community.html" class="flex flex-col items-center text-gray-400 hover:text-blue-500 transition-colors">
-                <i class="fas fa-users text-xl"></i>
+                <i class="fas fa-comments text-xl"></i>
                 <span class="text-xs mt-1">社区</span>
             </a>
             <a href="profile.html" class="flex flex-col items-center text-blue-500">
                 <i class="fas fa-user text-xl"></i>
-                <span class="text-xs mt-1">我的</span>
+                <span class="text-xs mt-1 font-medium">我的</span>
             </a>
         </div>
     </div>
